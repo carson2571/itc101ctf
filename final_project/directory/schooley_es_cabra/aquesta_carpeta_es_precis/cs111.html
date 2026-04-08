@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="/assets/deps/highlightjs/styles/base16/chalk.min.css"/>
+
+    <link href="/assets/deps/katex/katex.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link rel="stylesheet" href="/assets/deps/jetbrains-mono/wght.css"/>
+    <link rel="stylesheet" href="/assets/deps/jetbrains-mono/wght-italic.css"/>
+
+    <!-- MeruData Cookie Consent Banner and Cookie AutoBlocking -->
+    <script src="https://ccm.merudata.app/assets/c5d6912a-d8fc-4138-8d1d-6daeb3056f57/ccmconfig.js"></script>
+    <script src="https://ccm.merudata.app/assets/c5d6912a-d8fc-4138-8d1d-6daeb3056f57/ccm.min.js"></script>
+    <link rel="stylesheet" href="https://ccm.merudata.app/assets/c5d6912a-d8fc-4138-8d1d-6daeb3056f57/ccm.min.css"
+          media="print" onload="this.media='all'">
+    <!-- End MeruData Cookie Consent Banner and Cookie AutoBlocking -->
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+    <title>Winter 2026 :: BYU CS 111</title>
+</head>
+
+<body class="dark:bg-gray-900 flex flex-col min-h-screen">
+<header class="sticky top-0 z-50">
+    <nav class="bg-byu-navy dark:bg-byu-royal text-slate-50 flex justify-between items-center py-1 px-4 h-20 md:h-14 shadow-sm flex-col md:flex-row">
+        <div class="flex flex-row gap-3">
+            <a href="https://byu.edu/" target="_blank"><img class="h-8" src="/assets/images/BYU monogram_white.svg"
+                                                            alt="BYU"/></a>
+            <div class="w-1 border-r border-white h-8"></div>
+            <a class="text-2xl font-display" href="/">Computer Science 111</a>
+        </div>
+        <div class="flex space-x-4 font-semibold">
+            <a href="/">Home</a>
+            <a href="https://byu.instructure.com/courses/32071/pages/instructor-and-ta-information" target="_blank">Staff</a>
+            <a href="https://byu.instructure.com/courses/32071/assignments/syllabus" target="_blank">Syllabus</a>
+            <a href="/helpqueue/" target="_blank">Help Queue</a>
+            <a href="/discord" target="_blank">Discord</a>
+        </div>
+    </nav>
+</header>
+
+<main class="2xl:container 2xl:mx-auto px-4 md:px-16 flex-1" id="content">
+    <div class="contents lg:block lg:col-span-9">
+        <article class="prose dark:prose-invert max-w-none pt-4">
+            <section class="overflow-x-auto">
+                <div class="flex justify-between items-center">
+                    <h1 class="mb-0">CS 111: Introduction to Computer Science</h1>
+                    <h2 class="mt-0 mb-0"><em>Winter 2026</em></h2>
+                </div>
+                <p class="mb-0"><strong>Instructors:</strong></p>
+                <ul id="instructors" class="mt-1 mb-0">
+                    <li>Sections 1 (online) &amp 4 (MW 12:30pm)- <strong>Tom Stephens</strong> (<em>email: <a
+                            href="mailto:tstephen@cs.byu.edu">tstephen@cs.byu.edu</a></em>)
+                        <ul>
+                            <li>
+                                <em>Office Hours: Schedule a time: <a
+                                        href="https://calendly.com/byu-cs-tstephen/office-hours">https://calendly.com/byu-cs-tstephen/office-hours</a></em>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Section 2 (MW 9:30am) - <strong>Steve Richardson</strong> (<em>email: <a
+                            href="mailto:srichardson@byu.edu">srichardson@byu.edu</a></em>)
+                        <ul>
+                            <li>
+                                <em>Office Hours in 3372 TMCB: Tue 1pm-2pm, Wed 11am-12pm, Thu 1pm-3pm, or by
+                                    appointment (send me an email)</em>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Section 3 (MW 11:00am) - <strong>Steven Giles</strong> (<em>email: <a
+                            href="mailto:Steven.Giles@byu.edu">Steven.Giles@byu.edu</a></em>)
+                    </li>
+                    <li>Section 5 (MW 5:30pm) - <strong>Andrew Cluff</strong> (<em>email: <a
+                            href="mailto:Andrew_Cluff@byu.edu">Andrew_Cluff@byu.edu</a></em>)
+                    </li>
+                    <li>Section 21 (MW 3:30pm) - <strong>Brendan Hatch</strong> (<em>email: <a
+                            href="mailto:hatch5o6@student.byu.edu">hatch5o6@student.byu.edu</a></em>)
+                    </li>
+                </ul>
+                <blockquote class="box border-l-purple-500">
+                    <svg class="box fill-purple-500" viewBox="0 0 16 16" version="1.1" width="16" height="16"
+                         aria-hidden="true">
+                        <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+                    </svg>
+                    <strong class="text-purple-500">Students from Fall 2025 or Earlier</strong>
+
+
+                    <p>If you are viewing this site to look at the prior forms of the assignments, please head to the <a
+                            href="/archives/">course archives</a> to find the content. This website no longer links to
+                        all of those assignments directly.</p>
+
+                </blockquote>
+
+                <blockquote class="box border-l-blue-500">
+                    <svg class="box fill-blue-500" viewBox="0 0 16 16" version="1.1" width="16" height="16"
+                         aria-hidden="true">
+                        <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+                    </svg>
+                    <strong class="text-blue-500">Note</strong>
+
+
+                    <p>The links on this page point to the Canvas for the in-person sections. If you are in the Online
+                        section, there is a corresponding page in your Canvas but you'll have to navigate to it
+                        yourself.</p>
+
+                </blockquote>
+                <table id="calendar"
+                       class="table px-1 bg-gray-100 dark:bg-gray-800 mb-0 border-2 border-gray-300 dark:border-gray-700">
+                    <thead>
+                    <tr>
+                        <th>Week's Lecture Topics &amp; Slides</th>
+                        <th>Date</th>
+                        <th>Readings</th>
+                        <th>Lab Links</th>
+                        <th>Homework &amp; Project Due Dates / Test Dates</th>
+                    </tr>
+                    </thead>
+
+                    <colgroup>
+                        <col span="1"/>
+                        <col class="w-20 min-w-20 bg-baby-blue dark:bg-anti-blue" span="1"/>
+                        <col class="min-w-48" span="1"/>
+                        <col span="1"/>
+                        <col span="1"/>
+                    </colgroup>
+
+                    <tbody>
+                    <tr class="week-header">
+                        <th colspan="5">Week 1</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Mon<br/>Jan 5</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Jan 6</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/lecture-0-course-introduction-6"
+                               target="_blank">Lecture 0 - Course Introduction</a></td>
+                        <td class="font-bold">Wed<br/>Jan 7</td>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/how-to-navigate-canvas-slash-gradescope-7"
+                               target="_blank">How to Navigate Canvas / Gradescope</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594800" target="_blank">Syllabus
+                            Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/pages/disabling-ai-tools-2"
+                                target="_blank">Disabling AI Tools</a></td>
+                        <td colspan="2" class="bg-yellow-50 dark:bg-yellow-900" style="text-align: center;"><strong>First
+                            Day of Classes</strong></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Jan 8</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298458" target="_blank">Getting
+                            Started and Python Setup Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Jan 9</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 2</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-1-computational-thinking-and-writing-quality-code-7"
+                               target="_blank">Lecture 1 - Computational Thinking &amp; Writing Quality Code</a></td>
+                        <td class="font-bold">Mon<br/>Jan 12</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/code-quality-guidelines"
+                               target="_blank">Code Quality Guidelines</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594798" target="_blank">Python
+                            Basics Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594797" target="_blank">Console
+                            I/O Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594796"
+                                                        target="_blank">Booleans and Conditionals Reading
+                            Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594795"
+                                            target="_blank">While Loops Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594794" target="_blank">Functions
+                            Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Jan 13</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298466" target="_blank">Booleans
+                            and Conditionals Lab</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/assignments/1298465" target="_blank">While
+                            Loops Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298464"
+                                                 target="_blank">Functions Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-2-errors-and-introduction-to-testing-why-tdd-7"
+                               target="_blank">Lecture 2 - Errors &amp; Introduction to Testing (why, TDD)</a></td>
+                        <td class="font-bold">Wed<br/>Jan 14</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594760" target="_blank">Errors
+                            Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594793"
+                                                    target="_blank">Testing Intro Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594791" target="_blank">File I/O
+                            Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594790"
+                                                    target="_blank">List Basics Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594788" target="_blank">Slicing
+                            Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594789"
+                                                    target="_blank">Strings Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594792" target="_blank">For
+                            Loops Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/pages/free-coding-project-overview-4"
+                                target="_blank">Free Coding Project - Overview</a></td>
+                        <td class="bg-yellow-50 dark:bg-yellow-900" style="text-align: center;"><strong>University
+                            Add/Drop Deadline</strong></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298495" target="_blank">Homework
+                            00 - Pizza!</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Jan 15</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298427" target="_blank">File
+                            I/O Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298461"
+                                               target="_blank">List Basics Lab</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/assignments/1298426" target="_blank">Strings
+                            Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298459"
+                                           target="_blank">Slicing Lab</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/assignments/1298460" target="_blank">For
+                            Loops Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298462"
+                                                 target="_blank">Errors Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Jan 16</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 3</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Mon<br/>Jan 19</td>
+                        <td colspan="3" style="background: #aaaaff; text-align: center"><strong>Martin Luther King
+                            Holiday</strong></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Jan 20</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-3-environments-and-debugging-7"
+                               target="_blank">Lecture 3 - Environments and Debugging</a></td>
+                        <td class="font-bold">Wed<br/>Jan 21</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594787" target="_blank">Debugging
+                            Reading Quiz</a></td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298420" target="_blank">Homework
+                            01 - College Admissions Algorithms</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Jan 22</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298457" target="_blank">Debugging
+                            Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Jan 23</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 4</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-4-testing-and-writing-tests-7"
+                               target="_blank">Lecture 4 - Testing and Writing Tests</a></td>
+                        <td class="font-bold">Mon<br/>Jan 26</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594786" target="_blank">pytest
+                            Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594785"
+                                                    target="_blank">doctest Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Jan 27</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298456" target="_blank">pytest
+                            Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298455"
+                                           target="_blank">doctest Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-5-strings-lists-dictionaries-and-tuples-slicing-and-comprehensions-7"
+                               target="_blank">Lecture 5 - Strings, Lists, Dictionaries &amp; Tuples, Slicing &amp;
+                                Comprehensions</a></td>
+                        <td class="font-bold">Wed<br/>Jan 28</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594783" target="_blank">Tuples
+                            Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594784"
+                                                    target="_blank">Dictionaries Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594782" target="_blank">Comprehensions
+                            Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Jan 29</td>
+                        <td></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/assignments/1298492" target="_blank">Progress
+                            Check 1</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Jan 30</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 5</th>
+                    </tr>
+                    <tr>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/lecture-6-images-7"
+                               target="_blank">Lecture 6 - Images</a></td>
+                        <td class="font-bold">Mon<br/>Feb 2</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594781" target="_blank">Images
+                            Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Feb 3</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298453" target="_blank">Dictionaries
+                            Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298454"
+                                           target="_blank">Tuples Lab</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/assignments/1298452" target="_blank">Comprehensions
+                            Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298421"
+                                           target="_blank">Images Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-7-abstraction-and-command-line-arguments-7"
+                               target="_blank">Lecture 7 - Abstraction &amp; Command Line Arguments</a></td>
+                        <td class="font-bold">Wed<br/>Feb 4</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594780" target="_blank">Abstraction
+                            Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594779"
+                                                    target="_blank">Command Line Arguments Reading Quiz</a></td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298419" target="_blank">Homework
+                            02 - Image Manipulation</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Feb 5</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298447" target="_blank">Command
+                            Line Arguments Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Feb 6</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 6</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-8-big-o-algorithm-analysis-data-structures-7"
+                               target="_blank">Lecture 8 - Big O, Algorithm Analysis, Data Structures</a></td>
+                        <td class="font-bold">Mon<br/>Feb 9</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594778" target="_blank">Big O
+                            Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Feb 10</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-9-object-oriented-programming-and-class-design-7"
+                               target="_blank">Lecture 9 - Object Oriented Programming &amp; Class Design</a></td>
+                        <td class="font-bold">Wed<br/>Feb 11</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594777" target="_blank">OOP
+                            Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594776"
+                                                    target="_blank">Classes Reading Quiz</a></td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298415" target="_blank">Project
+                            01 - Image Processing</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Feb 12</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298442" target="_blank">Classes
+                            Lab</a></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/quizzes/594806" target="_blank">Skill
+                            Assessment 1</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Feb 13</td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/quizzes/594806" target="_blank">Skill
+                            Assessment 1</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298418"
+                                                    target="_blank">Free Coding Project - Proposal</a></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 7</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Mon<br/>Feb 16</td>
+                        <td colspan="3" style="background: #aaaaff; text-align: center"><strong>Presidents Day
+                            Holiday</strong></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-10-inheritance-and-interfaces"
+                               target="_blank">Lecture 10 - Inheritance &amp; Interfaces</a></td>
+                        <td class="font-bold">Tue<br/>Feb 17</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594756" target="_blank">Inheritance
+                            Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594775"
+                                                    target="_blank">Interfaces Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-11-dunder-functions-and-polymorphism"
+                               target="_blank">Lecture 11 - Dunder Functions &amp; Polymorphism</a></td>
+                        <td class="font-bold">Wed<br/>Feb 18</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594759" target="_blank">Dunder
+                            Functions Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594774" target="_blank">Polymorphism
+                            Reading Quiz</a></td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298434" target="_blank">Homework
+                            03 - The Grid Class</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Feb 19</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298441" target="_blank">Inheritance
+                            Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298440"
+                                           target="_blank">Interfaces Lab</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/assignments/1298439" target="_blank">Polymorphism
+                            Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298438"
+                                           target="_blank">Dunder Functions Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Feb 20</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 8</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-12-modularity-modular-design-and-random-numbers-7"
+                               target="_blank">Lecture 12 - Modularity, Modular Design &amp; Random Numbers</a></td>
+                        <td class="font-bold">Mon<br/>Feb 23</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594773" target="_blank">Random
+                            Numbers Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Feb 24</td>
+                        <td></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/assignments/1298486" target="_blank">Progress
+                            Check 2</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-13-lambda-expressions-and-higher-order-functions"
+                               target="_blank">Lecture 13 - Lambda Expressions &amp; Higher Order Functions</a></td>
+                        <td class="font-bold">Wed<br/>Feb 25</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594771" target="_blank">Lambda
+                            Functions Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594772" target="_blank">Higher
+                            Order Functions Reading Quiz</a></td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298484" target="_blank">Project
+                            02 - Falling Sand Simulation</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Feb 26</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298437" target="_blank">Random
+                            Numbers Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298435"
+                                                   target="_blank">Lambda Functions Lab</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/assignments/1298436" target="_blank">Higher
+                            Order Functions Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Feb 27</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 9</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-14-composition-decorators-and-mutability"
+                               target="_blank">Lecture 14 - Composition, Decorators, &amp; Mutability</a></td>
+                        <td class="font-bold">Mon<br/>Mar 2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Mar 3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/lecture-15-recursion-7"
+                               target="_blank">Lecture 15 - Recursion</a></td>
+                        <td class="font-bold">Wed<br/>Mar 4</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594758" target="_blank">Recursion
+                            Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594804"
+                                                    target="_blank">Review Syllabus Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Mar 5</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298433" target="_blank">Recursion
+                            Lab</a></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/quizzes/594805" target="_blank">Skill
+                            Assessment 2</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Mar 6</td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/quizzes/594805" target="_blank">Skill
+                            Assessment 2</a></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 10</th>
+                    </tr>
+                    <tr>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/lecture-16-linked-lists-7"
+                               target="_blank">Lecture 16 - Linked Lists</a></td>
+                        <td class="font-bold">Mon<br/>Mar 9</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594770" target="_blank">Linked
+                            Lists Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Mar 10</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298432" target="_blank">Linked
+                            Lists Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/lecture-17-tree-recursion-7"
+                               target="_blank">Lecture 17 - Tree Recursion</a></td>
+                        <td class="font-bold">Wed<br/>Mar 11</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594769" target="_blank">Tree
+                            Recursion Reading Quiz</a><br/><a
+                                href="https://byu.instructure.com/courses/32071/quizzes/594768" target="_blank">Merge
+                            Sort Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Mar 12</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298431" target="_blank">Tree
+                            Recursion Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Mar 13</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 11</th>
+                    </tr>
+                    <tr>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/lecture-18-trees-6"
+                               target="_blank">Lecture 18 - Trees</a></td>
+                        <td class="font-bold">Mon<br/>Mar 16</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594803" target="_blank">Trees
+                            Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Mar 17</td>
+                        <td></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/assignments/1298481" target="_blank">Progress
+                            Check 3</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/lecture-19-backtracking-7"
+                               target="_blank">Lecture 19 - Backtracking</a></td>
+                        <td class="font-bold">Wed<br/>Mar 18</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594767" target="_blank">Backtracking
+                            Reading Quiz</a></td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298479" target="_blank">Homework
+                            04 - Merge Sort</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Mar 19</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298430" target="_blank">Backtracking
+                            Lab</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298477"
+                                           target="_blank">Trees Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Mar 20</td>
+                        <td colspan="3" style="background: #aaaaff; text-align: center"><strong>Spring Day</strong></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 12</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-20-programming-languages-and-regular-expressions"
+                               target="_blank">Lecture 20 - Programming Languages &amp; Regular Expressions</a></td>
+                        <td class="font-bold">Mon<br/>Mar 23</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594766" target="_blank">Regex
+                            Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Mar 24</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298429" target="_blank">Regex
+                            Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-21-html-requests-and-beautiful-soup"
+                               target="_blank">Lecture 21 - HTML, Requests, and Beautiful Soup</a></td>
+                        <td class="font-bold">Wed<br/>Mar 25</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594765" target="_blank">Intro to
+                            WWW Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594757"
+                                                        target="_blank">HTML Tags and Attributes Reading Quiz</a></td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298476" target="_blank">Project
+                            03 - Recursive Backtrace Mazes</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Mar 26</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298428" target="_blank">HTML
+                            Tags and Attributes Lab</a></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/quizzes/594802" target="_blank">Skill
+                            Assessment 3</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Mar 27</td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/quizzes/594802" target="_blank">Skill
+                            Assessment 3</a><br/><a href="https://byu.instructure.com/courses/32071/assignments/1298417"
+                                                    target="_blank">Free Coding Project - Implementation</a></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 13</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://byu.instructure.com/courses/32071/pages/lecture-22-hyperlinks-and-robots-dot-txt-7"
+                               target="_blank">Lecture 22 - Hyperlinks and robots.txt</a></td>
+                        <td class="font-bold">Mon<br/>Mar 30</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594764" target="_blank">Hyperlinks
+                            Reading Quiz</a><br/><a href="https://byu.instructure.com/courses/32071/quizzes/594763"
+                                                    target="_blank">robots.txt Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Mar 31</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298425" target="_blank">Hyperlinks
+                            Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/lecture-23-web-scraping-7"
+                               target="_blank">Lecture 23 - Web Scraping</a></td>
+                        <td class="font-bold">Wed<br/>Apr 1</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594762" target="_blank">Web
+                            Scraping Reading Quiz</a></td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298422" target="_blank">Homework
+                            05 - Robots</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Apr 2</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298424" target="_blank">Web
+                            Scraping Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Apr 3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 14</th>
+                    </tr>
+                    <tr>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/lecture-24-data-visualization-7"
+                               target="_blank">Lecture 24 - Data Visualization</a></td>
+                        <td class="font-bold">Mon<br/>Apr 6</td>
+                        <td><a href="https://byu.instructure.com/courses/32071/quizzes/594761" target="_blank">Data
+                            Visualization Reading Quiz</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Apr 7</td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298423" target="_blank">Data
+                            Visualization Lab</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://byu.instructure.com/courses/32071/pages/lecture-25-conclusion"
+                               target="_blank">Lecture 25 - Conclusion</a></td>
+                        <td class="font-bold">Wed<br/>Apr 8</td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/quizzes/594801" target="_blank">Skill
+                            Assessment 4</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Apr 9</td>
+                        <td></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/assignments/1298472" target="_blank">Progress
+                            Check 4</a></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/quizzes/594801" target="_blank">Skill
+                            Assessment 4</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Apr 10</td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298470" target="_blank">Project
+                            04 - Webcrawler</a><br/><a class="text-red-600 font-bold"
+                                                       href="https://byu.instructure.com/courses/32071/quizzes/594801"
+                                                       target="_blank">Skill Assessment 4</a></td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 15</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Mon<br/>Apr 13</td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/quizzes/594801" target="_blank">Skill
+                            Assessment 4</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Apr 14</td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="text-red-600 font-bold"
+                               href="https://byu.instructure.com/courses/32071/quizzes/594801" target="_blank">Skill
+                            Assessment 4</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Wed<br/>Apr 15</td>
+                        <td colspan="2" class="bg-yellow-50 dark:bg-yellow-900" style="text-align: center;"><strong>Last
+                            Day of Classes</strong></td>
+                        <td><a href="https://byu.instructure.com/courses/32071/assignments/1298416" target="_blank">Free
+                            Coding Project - Reflection</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Apr 16</td>
+                        <td colspan="3" style="background: #aaaaff; text-align: center"><strong>Exam Prep Day / Reading
+                            Day</strong></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Apr 17</td>
+                        <td colspan="3" rowspan="2" style="background: #ff7777; text-align: center"><strong>Finals Week
+                            - Check your schedule for specific exam times</strong></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Sat<br/>Apr 18</td>
+                    </tr>
+                    <tr class="week-header">
+                        <th colspan="5">Week 16</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Mon<br/>Apr 20</td>
+                        <td colspan="3" rowspan="3" style="background: #ff7777; text-align: center"><strong>Finals Week
+                            - Check your schedule for specific exam times</strong></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Tue<br/>Apr 21</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Wed<br/>Apr 22</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Thu<br/>Apr 23</td>
+                        <td colspan="3" style="background: #aaaaff; text-align: center"><strong>Summer Break
+                            starts!</strong></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="font-bold">Fri<br/>Apr 24</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+        </article>
+    </div>
+</main>
+
+<footer class="2xl:container 2xl:mx-auto px-4 md:px-16">
+    <hr class="h-px my-8 border-0 bg-gray-400 dark:bg-white"/>
+    <section class="flex flex-col md:grid md:grid-cols-3 gap-4 dark:text-white">
+        <div class="mx-auto text-center">
+            <h3 class="text-2xl font-display font-bold">
+                <a href="https://byu.instructure.com/courses/32071/">CS 111</a>
+            </h3>
+            <ul class="mt-4 space-y-2">
+                <li>
+                    <a href="/articles/">Articles</a>
+                </li>
+                <li>
+                    <a href="https://byu.instructure.com/courses/32071/pages/instructor-and-ta-information">Contact
+                        Staff</a>
+                </li>
+                <li>
+                    <a href="https://privacy.byu.edu">Privacy Notice</a>
+                </li>
+                <li>
+                    <a href="https://infosec.byu.edu/cookie-prefs">Cookie Preferences</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mx-auto text-center">
+            <h3 class="text-2xl font-display font-bold">Resources</h3>
+            <ul class="mt-4 space-y-2">
+                <li>
+                    <a href="/articles/studying/">Studying Guide</a>
+                </li>
+                <li>
+                    <a href="/articles/debugging/">Debugging Guide</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mx-auto text-center">
+            <h3 class="text-2xl font-display font-bold">Policies</h3>
+            <ul class="mt-4 space-y-2">
+                <li>
+                    <a href="https://byu.instructure.com/courses/32071/assignments/syllabus">Syllabus</a>
+                </li>
+                <li>
+                    <a href="https://byu.instructure.com/courses/32071/assignments/syllabus#assignments">Assignments</a>
+                </li>
+                <li>
+                    <a href="https://byu.instructure.com/courses/32071/assignments/syllabus#exams">Exams</a>
+                </li>
+                <li>
+                    <a href="https://byu.instructure.com/courses/32071/assignments/syllabus#grading">Grading</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class="mt-8 text-byu-navy dark:text-white">
+        <p class="mt-8 pb-4 text-lg font-display font-bold">
+            &copy; 2026 Brigham Young University, All Rights Reserved
+        </p>
+    </div>
+    <script>
+        console.log("%cLast build: 2026-04-07 2:51:52 PM MDT", "font-size: 1em; font-weight: bold;");
+    </script>
+</footer>
+<h1>flag:ViscaCatalunya<h1/>
+</body>
+
+</html>
